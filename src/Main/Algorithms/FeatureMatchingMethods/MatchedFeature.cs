@@ -52,7 +52,7 @@ namespace USC.GISResearchLab.Common.Core.Geocoders.FeatureMatching
             get
             {
                 long diff = MatchScoreEndTimer.Ticks - MatchScoreStartTimer.Ticks;
-                TimeSpan t = TimeSpan.FromTicks(diff) ;
+                TimeSpan t = TimeSpan.FromTicks(diff);
                 return t.TotalMilliseconds;
             }
         }

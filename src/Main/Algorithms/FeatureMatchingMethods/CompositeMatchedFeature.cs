@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.SqlServer.Types;
+﻿using Microsoft.SqlServer.Types;
 using SQLSpatialTools;
+using System;
+using System.Collections.Generic;
 using USC.GISResearchLab.Common.Addresses;
 using USC.GISResearchLab.Common.Geographics.Units;
 using USC.GISResearchLab.Common.Geometries;
@@ -19,7 +19,7 @@ namespace USC.GISResearchLab.Common.Core.Geocoders.FeatureMatching
         public RelaxableStreetAddress[] MatchedAddresses { get; set; }
         public StreetAddress[] MatchedFeatureAddresses { get; set; }
 
-        
+
 
         #endregion
 
@@ -50,7 +50,7 @@ namespace USC.GISResearchLab.Common.Core.Geocoders.FeatureMatching
                     }
                 }
 
-                
+
                 //SqlGeography compositeGeography = Geometry.BuildSqlGeographyMultiPoint(geographies.ToArray(), 4269);
                 //// convex hull will fail if points are collinear
                 //try
@@ -97,7 +97,7 @@ namespace USC.GISResearchLab.Common.Core.Geocoders.FeatureMatching
                 SqlGeometry compositeGeometry = SQLSpatialToolsFunctions.VacuousGeographyToGeometry(compositeGeography, compositeGeography.STSrid.Value);
                 SqlGeometry convexHullGeometry = compositeGeometry.STConvexHull();
                 SqlGeography convexHullGeography = SQLSpatialToolsFunctions.VacuousGeometryToGeography(convexHullGeometry, convexHullGeometry.STSrid.Value);
-                
+
                 MatchedReferenceFeature.StreetAddressableGeographicFeature.Geometry.SqlGeometry = convexHullGeometry;
                 MatchedReferenceFeature.StreetAddressableGeographicFeature.Geometry.SqlGeography = convexHullGeography;
 
@@ -112,7 +112,7 @@ namespace USC.GISResearchLab.Common.Core.Geocoders.FeatureMatching
             }
         }
 
-        
+
 
         public void AddMatchedFeature(MatchedFeature feature)
         {
@@ -137,7 +137,7 @@ namespace USC.GISResearchLab.Common.Core.Geocoders.FeatureMatching
 
                 //kmlDoc.AddSqlGeography(featureGeography, "feature", styleName, null);
                 //kmlDoc.AddSqlGeography(featureGeographyBufferred, "featureBufferred", styleName, null);
-                
+
                 //string kml = kmlDoc.AsString();
 
                 IsExactMatch = feature.IsExactMatch;

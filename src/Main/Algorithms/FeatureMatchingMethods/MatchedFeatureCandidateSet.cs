@@ -10,10 +10,10 @@ namespace USC.GISResearchLab.Geocoding.Core.Algorithms.FeatureMatchingMethods
 
         #region Properties
 
-        
+
         public List<MatchedFeature> MatchedFeatures { get; set; }
 
-        
+
         public string Error { get; set; }
 
         [XmlIgnore]
